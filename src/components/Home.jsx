@@ -86,38 +86,39 @@ axios
 
           {/* Weather Card */}
           <div className="flex justify-center mt-15 cursor-pointer">
-            <div className="border border-cyan-100 w-75 h-95 rounded-2xl">
+            <div className="border border-cyan-100 bg-slate-800 w-75 h-95 rounded-2xl">
 
               {/* Weather information will come here */}
               {
                 Weather.loading && (
-                  <Oval type="Oval" color="green" height={80} width={80} ></Oval>
-
+                  <div className="flex justify-center items-center mt-30">
+                  <Oval type="Oval" color="green" className="flex justify-center items-center" height={80} width={80} ></Oval>
+                   </div>
                 )
               }
               {
                 Weather.error && (
-                  <div>
-                    <span>City Not Found</span>
+                  <div >
+                    <span className="text-red-500 mt-40 text-4xl flex justify-center items-center">City Not Found</span>
                   </div>
                 )
               }
               {
                 Weather && Weather.data && Weather.data.main && (
                 <div>
-                  <div className="">
+                  <div className=" flex justify-center text-white mt-5 text-2xl font-bold">
                     <h2>{Weather.data.name},
                       <span>
                         {Weather.data.sys.country}
                       </span>
                     </h2>
                   </div>
-                  <div className="">
+                  <div className="flex justify-center mt-2 text-slate-400">
                     <span>
                        {toData()}
                     </span>
                   </div>
-                  <div className="icon-temp">
+                  <div className=" flex justify-center mt-10 text-3xl font-bold text-cyan-200">
                     <img
                       src={`http://openweathermap.org/img/wn/${Weather.data.weather[0].icon}@2x.png`}
                       alt="Weather Icon"
@@ -125,9 +126,9 @@ axios
                     {Math.round(Weather.data.main.temp)}°C
                     
                   </div>
-                  <div className="des-wind">
-                     <p>{Weather.data.weather[0].description.toUpperCase()}</p>
-                     <p>Wind Speed: {Weather.data.wind.speed} m/s</p>
+                  <div className="*:flex justify-center items-center mt-6  text-lg font-bold">
+                     <p className="flex justify-center text-gray-300">{Weather.data.weather[0].description.toUpperCase()}</p>
+                     <p className="flex justify-center mt-3 text-blue-600"><p className="text-cyan-100 pr-1">Wind Speed: </p> {Weather.data.wind.speed} m/s</p>
                   </div>
                 </div>
                   
